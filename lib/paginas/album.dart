@@ -2,6 +2,8 @@ import 'package:clonespotify/json/canciones_json.dart';
 import 'package:clonespotify/temas/colores.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_font_icons/flutter_font_icons.dart';
 
 class AlbumPage extends StatefulWidget {
   const AlbumPage({Key? key, this.canciones}) : super(key: key);
@@ -11,6 +13,47 @@ class AlbumPage extends StatefulWidget {
 }
 
 class _AlbumPageState extends State<AlbumPage> {
+  double _currentSliderValue = 0;
+
+  late AudioPlayer advancedPlayer;
+  late AudioCache audioCache;
+  bool isPlaying = true;
+
+  @override
+  void initState() {
+    super.initState();
+    initPlayer();
+  }
+
+  initPlayer() {
+    advancedPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: advancedPlayer);
+    playSound(widget.canciones['song_url']);
+  }
+
+  playSound(localPath) async {
+    await audioCache.play(localPath);
+  }
+
+  stopSound(localPath) async {
+    Uri audioFile = await audioCache.load(localPath);
+    //await advancedPlayer.setSourceUrl(audioFile.path);
+    await advancedPlayer.setUrl(audioFile.path);
+    advancedPlayer.stop();
+  }
+
+  seekSound() async {
+    Uri audioFile = await audioCache.load(widget.canciones['song_url']);
+    await advancedPlayer.setUrl(audioFile.path);
+    advancedPlayer.seek(Duration(milliseconds: 2000));
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    stopSound(widget.canciones['song_url']);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,12 +109,9 @@ class _AlbumPageState extends State<AlbumPage> {
                   ],
                 ),
               ),
-
-
               SizedBox(
                 height: 30,
               ),
-              
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Padding(
@@ -142,66 +182,61 @@ class _AlbumPageState extends State<AlbumPage> {
                   ),
                 ),
               ),
-
-
               SizedBox(
                 height: 30,
               ),
-              
-              Column(
-                  children: List.generate(songAlbums.length, (index) {
-                return Padding(
-                  padding:
-                      const EdgeInsets.only(left: 30, right: 30, bottom: 10),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        Container(
-                          width: (size.width - 60) * 0.77,
-                          child: Text(
-                            "${index + 1}  " + songAlbums[index]['title'],
-                            style: TextStyle(color: negro),
+              Slider(
+                  activeColor: Colors.black,
+                  value: _currentSliderValue,
+                  min: 0,
+                  max: 20,
+                  onChanged: (value) {
+                    setState(() {
+                      _currentSliderValue = value;
+                    });
+                    seekSound();
+                  }),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: size.width,
+                    child: IconButton(
+                        iconSize: 50,
+                        icon: Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black),
+                          child: Center(
+                            child: Icon(
+                              isPlaying
+                                  ? Entypo.controller_stop
+                                  : Entypo.controller_play,
+                              size: 28,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                        Container(
-                          width: (size.width - 60) * 0.23,
-                          height: 50,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                songAlbums[index]['duration'],
-                                style: TextStyle(color: negro, fontSize: 14),
-                              ),
-                              Container(
-                                width: 25,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: negro.withOpacity(0.8),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                      Icons.play_arrow,
-                                      color: gris,
-                                      size: 16,
-                                    ),
-                                  
-
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                        onPressed: () {
+                          if (isPlaying) {
+                            stopSound(widget.canciones['song_url']);
+                            setState(() {
+                              isPlaying = false;
+                            });
+                          } else {
+                            playSound(widget.canciones['song_url']);
+                            setState(() {
+                              isPlaying = true;
+                            });
+                          }
+                        }),
                   ),
-                );
-              }))
-              
+                ],
+              ),
             ],
-
           ),
           SafeArea(
             child: Row(
@@ -227,14 +262,7 @@ class _AlbumPageState extends State<AlbumPage> {
             ),
           )
         ],
-
-
-        
       ),
     );
   }
-
-
-
-
 }
