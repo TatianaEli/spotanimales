@@ -124,7 +124,7 @@ class _AlbumPageState extends State<AlbumPage> {
                           onTap: () {},
                           child: Column(
                             children: [
-                              Container(
+                              /*Container(
                                 width: 180,
                                 height: 180,
                                 decoration: BoxDecoration(
@@ -133,17 +133,17 @@ class _AlbumPageState extends State<AlbumPage> {
                                         fit: BoxFit.cover),
                                     color: primario,
                                     borderRadius: BorderRadius.circular(10)),
-                              ),
+                              ),*/
                               SizedBox(
                                 height: 20,
                               ),
-                              Text(
+                              /*Text(
                                 songs[index]['title'],
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: negro,
                                     fontWeight: FontWeight.w600),
-                              ),
+                              ),*/
                               SizedBox(
                                 height: 5,
                               ),

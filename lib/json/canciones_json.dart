@@ -54,15 +54,10 @@ const List songs = [
     // "song_count": "100 songs",
     // "date": "about 19 hr",
     "color": Color(0xFFf69129),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/elefante.mp3",
     "songs": [
       {"title": "Sonido de elefante", "duration": "1:21"},
-      // {"title": "Home_", "duration": "2:17"},
-      // {"title": "Do I Wanna Know?", "duration": "1:31"},
-      // {"title": "Whiskey Sour", "duration": "1:42"},
-      // {"title": "Decisions", "duration": "1:29"},
-      // {"title": "Trees", "duration": "1:51"},
-      // {"title": "Earth", "duration": "1:39"},
+
     ]
   },
   {
@@ -72,7 +67,7 @@ const List songs = [
     // "song_count": "324 songs",
     // "date": "about 14 hr",
     "color": Color(0xFF64849c),
-    "song_url": "songs/2.mp3",
+    "song_url": "songs/caballo.mp3",
     "songs": [
       {"title": "Sonido de caballo", "duration": "2:01"},
       // {"title": "Larks", "duration": "2:54"},
@@ -90,7 +85,7 @@ const List songs = [
     // "song_count": "195 songs",
     // "date": "about 10 hr",
     "color": Color(0xFF58546c),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/gorilla.mp3",
     "songs": [
       {"title": "Sonido de mono", "duration": "3:20"},
       // {"title": "Just Look at You", "duration": "3:07"},
@@ -114,7 +109,7 @@ const List songs1 = [
     // "song_count": "100 songs",
     // "date": "about 19 hr",
     "color": Color(0xFFf69129),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/leon.mp3",
     "songs": [
       {"title": "Sonido de leon", "duration": "1:21"},
       // {"title": "Home_", "duration": "2:17"},
@@ -132,7 +127,7 @@ const List songs1 = [
     // "song_count": "324 songs",
     // "date": "about 14 hr",
     "color": Color(0xFF64849c),
-    "song_url": "songs/2.mp3",
+    "song_url": "songs/gato.mp3",
     "songs": [
       {"title": "Sonido de gato", "duration": "2:01"},
       // {"title": "Larks", "duration": "2:54"},
@@ -150,7 +145,7 @@ const List songs1 = [
     // "song_count": "195 songs",
     // "date": "about 10 hr",
     "color": Color(0xFF58546c),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/jaguar.mp3",
     "songs": [
       {"title": "Sonido de leopardo", "duration": "3:20"},
       // {"title": "Just Look at You", "duration": "3:07"},
@@ -174,7 +169,7 @@ const List songs2 = [
     // "song_count": "100 songs",
     // "date": "about 19 hr",
     "color": Color(0xFFf69129),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/delfin.mp3",
     "songs": [
       {"title": "Sonido de delfin", "duration": "1:21"},
       // {"title": "Home_", "duration": "2:17"},
@@ -192,7 +187,7 @@ const List songs2 = [
     // "song_count": "324 songs",
     // "date": "about 14 hr",
     "color": Color(0xFF64849c),
-    "song_url": "songs/2.mp3",
+    "song_url": "songs/ballena.mp3",
     "songs": [
       {"title": "Sonido de ballena", "duration": "2:01"},
       // {"title": "Larks", "duration": "2:54"},
@@ -210,7 +205,7 @@ const List songs2 = [
     // "song_count": "195 songs",
     // "date": "about 10 hr",
     "color": Color(0xFF58546c),
-    "song_url": "songs/1.mp3",
+    "song_url": "songs/leonm.mp3",
     "songs": [
       {"title": "Sonido de Leon marino", "duration": "3:20"},
       // {"title": "Just Look at You", "duration": "3:07"},
